@@ -10,7 +10,13 @@ async function getValue(key) {
   return redis.get(key);
 }
 
+async function incr(key) {
+  const redis = getConnection();
+  return redis.incr(key);
+}
+
 module.exports = {
   getValue,
   setKey,
+  incr,
 };
