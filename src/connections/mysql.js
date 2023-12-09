@@ -13,6 +13,7 @@ async function createConnection() {
 
 async function assignConnection() {
   connection = await createConnection();
+  console.log("assigned mysql");
 }
 
 function getConnection() {
