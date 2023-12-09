@@ -1,17 +1,35 @@
 const { UserError } = require("../../modules/errors");
 
-const response = (object) => res.status(200).json(object);
+const queryExecutor = require("../../modules/query-executor");
 
-function validateInput(id, content) {
+const response = (res, object) => res.status(200).json(object);
+
+function validateInput(id, content, res) {
   if (!id || !content) {
-    return response(UserError("Empty Input Received", 400));
+    throw new UserError("Empty Input");
   }
 }
 
-module.exports = async (req, res) => {
-  const { id, content } = req?.body;
-  const error = validateInput(id, content);
-  if (!error) return error;
+async function insertPost(id, content) {
+  const query = "INSERT INTO posts (id, content) VALUES (?, ?)";
+  try {
+    await queryExecutor(query, [id, content]);
+  } catch (error) {
+    throw error;
+  }
+}
 
-  return response({ result: 1 });
+const posts = async (req, res) => {
+  const { id, content } = req?.body;
+  validateInput(id, content);
+  await insertPost(id, content);
+  return response(res, { success: true });
+};
+
+module.exports = async (req, res) => {
+  try {
+    await posts(req, res);
+  } catch (error) {
+    return response(res, { errMessage: error.message });
+  }
 };

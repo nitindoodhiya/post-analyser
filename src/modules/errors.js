@@ -1,11 +1,12 @@
-const UserError = (message, code) => ({
-  message,
-  code,
-});
+class UserError extends Error {
+  constructor(message) {
+    super(message);
+    this.extensions = {
+      isUserError: true,
+      code: 400,
+      errMessage: message,
+    };
+  }
+}
 
-const InternalServerError = (
-  message = "Internal Server Error",
-  code = 500
-) => ({ message, code });
-
-module.exports = { UserError, InternalServerError };
+module.exports = { UserError };
