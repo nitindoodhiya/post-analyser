@@ -8,5 +8,5 @@ module.exports = async (req, res) => {
     return response(UserError("Empty Input Received", 400));
   }
 
-  return res.status(200).json({ result: 1 });
+  return response({ result: 1 });
 };
