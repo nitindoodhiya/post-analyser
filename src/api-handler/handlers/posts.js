@@ -15,7 +15,7 @@ async function insertPost(id, content) {
   try {
     await queryExecutor(query, [id, content]);
   } catch (error) {
-    throw error;
+    if (error.code !== "ER_DUP_ENTRY") throw error;
   }
 }
 

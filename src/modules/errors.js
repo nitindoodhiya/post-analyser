@@ -31,7 +31,7 @@ class InternalServerError extends Error {
 }
 
 function errorHandler(error) {
-  if (error.extensions.isUserError || error.extensions.isNotFoundError) {
+  if (error.extensions?.isUserError || error.extensions?.isNotFoundError) {
     return { errMessage: error.message, code: error.extensions.code };
   }
   console.log(`DEBUG_ERROR_LOG_${JSON.stringify(error)}`);
