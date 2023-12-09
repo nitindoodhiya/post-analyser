@@ -1,4 +1,4 @@
-const { UserError } = require("../../modules/errors");
+const { UserError, errorHandler } = require("../../modules/errors");
 
 const queryExecutor = require("../../modules/query-executor");
 
@@ -28,8 +28,9 @@ const posts = async (req, res) => {
 
 module.exports = async (req, res) => {
   try {
-    await posts(req, res);
+    return await posts(req, res);
   } catch (error) {
-    return response(res, { errMessage: error.message });
+    const errorResponse = errorHandler(error);
+    return response(res, errorResponse);
   }
 };
