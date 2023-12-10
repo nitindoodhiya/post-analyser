@@ -2,7 +2,6 @@ const { getConnection } = require("../connections/redis");
 
 function setKey(key, value, time) {
   const redis = getConnection();
-  console.log({ key, value, time });
   return redis.set(key, JSON.stringify(value), "EX", time);
 }
 
