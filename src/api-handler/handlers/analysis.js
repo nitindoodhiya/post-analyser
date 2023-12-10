@@ -18,7 +18,7 @@ const analysis = async (req, res) => {
   const { id } = req.params;
   const post = await fetchPost(id);
   if (!post) throw new NotFoundError("Invalid Post");
-  const analysis = analyser(post);
+  const analysis = await analyser(post);
   return response(res, analysis);
 };
 

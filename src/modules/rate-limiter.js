@@ -7,7 +7,7 @@ async function rateLimiter(req, res, next) {
   const key = `${ip}_${timestamp}`;
 
   const currentQPS = await redis.incr(key);
-  if (currentQPS === 1) await redis.setKey(key, 1);
+  if (currentQPS === 1) await redis.setKey(key, 1, 10);
   if (currentQPS >= limit) {
     return res.status(429).json({ errMessage: "Too Many Requests" });
   }
