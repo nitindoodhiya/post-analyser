@@ -1,1 +1,1 @@
-mysql -u root < ./init/backup.sql
+mysql -u root < ./work/backup.sql
