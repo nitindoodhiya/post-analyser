@@ -1,14 +1,20 @@
 const Redis = require("ioredis");
 
+const { redis: redisConf } = require("../../conf");
+
 let redis = null;
 
 function createConnection() {
-  const newRedis = new Redis({
-    host: "localhost",
-    port: 6379,
-    password: "qwerty",
-  });
-  return newRedis;
+  try {
+    const newRedis = new Redis({
+      host: redisConf.host,
+      port: redisConf.port,
+      password: redisConf.password,
+    });
+    return newRedis;
+  } catch (error) {
+    console.log(`FATAL_ERROR_REDIS_CONNECTION_${JSON.stringify(error)}`);
+  }
 }
 
 function assignConnection() {
