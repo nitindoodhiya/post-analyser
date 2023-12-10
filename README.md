@@ -17,6 +17,7 @@
 - `git clone https://github.com/nitindoodhiya/post-analyser.git`
 - `cd post-analyser`
 - `docker compose up`
+- copy content of .env.sample to .env
 - `sh setup.sh`
 - open http://localhost:3000/
 
