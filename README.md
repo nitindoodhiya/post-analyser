@@ -14,12 +14,13 @@
 - ML Models: NLTK based models
   
 # Setup
-- `git clone https://github.com/nitindoodhiya/post-analyser.git`
-- `cd post-analyser`
-- `docker compose up`
-- copy content of .env.sample to .env
-- `sh setup.sh`
-- open http://localhost:3000/
+1. `git clone https://github.com/nitindoodhiya/post-analyser.git`
+2. `cd post-analyser`
+3. `docker compose up`
+4. copy content of .env.sample to .env
+5. `sh setup.sh`
+6. start api server: `npm start`
+7. open http://localhost:3000/
 
 # Endpoints
 - POST [/api/v1/posts/]
