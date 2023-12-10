@@ -9,6 +9,7 @@ async function createConnection() {
     const newConnection = await mysql.createConnection({
       host: mysqlConf.host,
       user: mysqlConf.user,
+      port: mysqlConf.port,
       database: mysqlConf.database,
     });
     return newConnection;
