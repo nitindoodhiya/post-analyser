@@ -1,14 +1,21 @@
 const mysql = require("mysql2/promise");
 
+const { mysql: mysqlConf } = require("../../conf");
+
 let connection = null;
 
 async function createConnection() {
-  const newConnection = await mysql.createConnection({
-    host: "localhost",
-    user: "root",
-    database: "testDB",
-  });
-  return newConnection;
+  try {
+    const newConnection = await mysql.createConnection({
+      host: mysqlConf.host,
+      user: mysqlConf.user,
+      database: mysqlConf.database,
+    });
+    return newConnection;
+  } catch (error) {
+    console.log(`FATAL_ERROR_DB_CONNECTION_${JSON.stringify(error)}`);
+    throw error;
+  }
 }
 
 async function assignConnection() {
