@@ -1,0 +1,1 @@
+mysql -u root < ./init/backup.sql

@@ -16,8 +16,9 @@
 # Setup
 - git clone https://github.com/nitindoodhiya/post-analyser.git
 - cd post-analyser
-- npm install
 - docker compose up
+- sh ./init/bash.sh
+- npm install
 - open http://localhost:3000/
 
 # Endpoints
