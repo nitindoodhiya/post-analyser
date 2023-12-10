@@ -18,8 +18,8 @@
 - cd post-analyser
 - npm install
 - docker compose up
-- open http://localhost:3000
+- open http://localhost:3000/api/v1/posts
 
 # Endpoints
-- POST[/post]
-- GET[/:id/analysis]
+- POST [/post]
+- GET [/:id/analysis]
