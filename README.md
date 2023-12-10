@@ -14,11 +14,10 @@
 - ML Models: NLTK based models
   
 # Setup
-- git clone https://github.com/nitindoodhiya/post-analyser.git
-- cd post-analyser
-- docker compose up
-- sh setup.sh
-- npm install
+- `git clone https://github.com/nitindoodhiya/post-analyser.git`
+- `cd post-analyser`
+- `docker compose up`
+- `sh setup.sh`
 - open http://localhost:3000/
 
 # Endpoints
